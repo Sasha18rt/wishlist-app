@@ -41,16 +41,23 @@ console.log("products", products);
 						<ProductCard key={product._id} product={product} />
 					))}
 				</SimpleGrid>
-       
-					<Text fontSize='xl' textAlign={"center"} fontWeight='bold' color='gray.500'>
-						No products found 😢{" "}
-						<Link href="/create">
-							<Text as='span' color='blue.500' _hover={{ textDecoration: "underline" }}>
-								Create a product
-							</Text>
-						</Link>
-					</Text>
-				
+        {products.length === 0 && (
+          <Text
+            fontSize="xl"
+            textAlign={"center"}
+            fontWeight="bold"
+            color="gray.500"
+          >
+            No products found 😢{" "}
+            <Link
+              href="/create"
+              color="blue.500"
+              _hover={{ textDecoration: "underline" }}
+            >
+              Create a product
+            </Link>
+          </Text>
+        )}
       </Stack>
     </Container>
   )
