@@ -1,5 +1,4 @@
-import { Button, Container, Flex, HStack, Heading } from '@chakra-ui/react';
-import { Link } from "react-router-dom";
+import { Button, Center, Container, Flex, Link, Heading, Stack } from '@chakra-ui/react';
 import React from 'react';
 import { FaPlus } from "react-icons/fa";
 import ColorModeButton from "./ui/color-mode";
@@ -16,33 +15,43 @@ export const Navbar = () => {
           sm: "row",
         }}
       >
-        <Heading
-          as="h1"
-          size="2xl"
-          fontWeight="bold"
-          textTransform="uppercase"
-          textAlign="center"
-          bgGradient="to-r"
-         gradientFrom="cyan.400"
-          gradientTo="blue.500"
-          bgClip="text"
-        >
-           <Link to={"/"}>Product Store 🛒</Link>
-        </Heading>
+       <Heading
+  as="a" 
+  href="/" 
+  size="2xl"
+  letterSpacing="tight"
+  fontWeight="bold"
+  textTransform="uppercase"
+  textAlign="center"
+  bgGradient="to-r"
+  gradientFrom="cyan.400"
+  gradientTo="blue.500"
+  bgClip="text"
+  _hover={{ textDecoration: "none", cursor: "pointer" }} // Забираємо стандартне підкреслення
+>
+  Product Store 🛒
+</Heading>
+        <Center >
+  <Stack direction="horizontal" gap={50}>
+    <Link  to="#1"
+    _hover={{ textDecoration: "underline" }}>About</Link>
+    <Link>1</Link>
+    <Link>1</Link>
 
-        <HStack spacing={4} alignItems="center">
+  </Stack>
+</Center>
+        <Stack  direction="row" >
           <Link to="/create">
             <Button
               size="md"
-              variant="ghost"
-              width="40px"
-              height="40px"
+              
             >
-              <FaPlus />
+              Create
             </Button>
           </Link>
+          <Button variant="outline">Sign in</Button>
           <ColorModeButton size="md" />
-        </HStack>
+        </Stack>
       </Flex>
     </Container>
   );

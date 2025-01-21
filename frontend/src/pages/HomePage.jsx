@@ -1,8 +1,10 @@
 import { Container, Link, Stack, Text  } from '@chakra-ui/react';
 import React, { useEffect } from 'react'
 import { SimpleGrid } from "@chakra-ui/react"
+import { EmptyState } from "../components/ui/empty-state";
 import { useProductStore } from '../store/product';
 import ProductCard from '../components/ProductCard';
+import { LuShoppingCart } from 'react-icons/lu';
 export const HomePage = () => {
   const { fetchProducts, products } = useProductStore();
 
@@ -42,21 +44,24 @@ console.log("products", products);
 					))}
 				</SimpleGrid>
         {products.length === 0 && (
-          <Text
-            fontSize="xl"
-            textAlign={"center"}
-            fontWeight="bold"
-            color="gray.500"
-          >
-            No products found 😢{" "}
+        <EmptyState
+        icon={<LuShoppingCart />}
+        title="Your cart is empty"
+        description={
+          <>
+            Explore our products and add items.{' '}
             <Link
               href="/create"
-              color="blue.500"
+              colorPalette="teal"
               _hover={{ textDecoration: "underline" }}
             >
-              Create a product
-            </Link>
-          </Text>
+              Create a product 
+            </Link>{' '}
+            to your cart.
+          </>
+        }
+      />
+      
         )}
       </Stack>
     </Container>
